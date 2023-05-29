@@ -67,7 +67,7 @@ class Game
 
   def dealer_step
     @deck.deal_card(@dealer_hand) if @dealer_hand.value < 17
-    @player_hand.cards.count == 3 ? who_win? : player_step
+    @player_hand.cards.count <= 3 ? who_win? : player_step
   end
 
   def player_step
@@ -78,6 +78,7 @@ class Game
   def who_win?
     info
     puts "Счет Дилера: #{@dealer_hand.value}"
+    @dealer_hand.display
     draw?
     player_win?
     dealer_win?
